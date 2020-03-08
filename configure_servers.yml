@@ -1,0 +1,6 @@
+---
+- name: Update servers
+  hosts: digital_ocean
+  become: no
+  roles:
+      - spider

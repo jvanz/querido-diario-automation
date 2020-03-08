@@ -1,0 +1,22 @@
+---
+- debug:
+    msg: "Target distribution: {{ ansible_distribution }}"
+
+- debug:
+    msg: "Target distribution: {{ ansible_distribution_version }}"
+
+- name: Add podman repository
+  shell: "echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_{{ansible_distribution_version}}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
+  when: ansible_distribution == "Ubuntu"
+
+- name: Add apt-key
+  shell: "wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_{{ansible_distribution_version}}/Release.key -O- | apt-key add -"
+
+- name: Upgrade everything
+  become: yes
+  shell: apt-get update -qq
+
+- name: Install podman
+  apt:
+      name: "podman"
+      state: present
