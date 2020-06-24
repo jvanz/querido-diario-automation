@@ -1,14 +1,14 @@
 [Unit]
-Description=Run spider for the city XXXX
-After=remote-fs.target sqldb.service memcached.service
-Requires=sqldb.service memcached.service
-AssertPathExists=/srv/www
+Description=%i spider
 
 [Service]
-Type=notify
-ExecStart=/usr/sbin/some-fancy-httpd-server
-Nice=0
-PrivateTmp=yes
+Type=oneshot
+TimeoutStartSec=0
+TimeoutSec=300
+ExecStartPre=-/usr/bin/podman stop %i-spider
+ExecStartPre=-/usr/bin/podman rm %i-spider
+ExecStartPre=/usr/bin/podman pull docker.io/serenata/diario-oficial
+ExecStart=/usr/bin/podman run --env-file {{ diario_configdir }}/env --rm --name %i-spider --volume {{ host_data_path }}:/mnt/data --user {{ containeruser }} {{ container_image }}  bash -c "cd data_collection && scrapy crawl %i"
 
 [Install]
 WantedBy=multi-user.target
