@@ -1,0 +1,7 @@
+---
+- name: Configure scrapyd in a Ubuntu server
+  hosts: elasticsearch
+  become: yes
+  roles:
+      - common
+      - elasticsearch

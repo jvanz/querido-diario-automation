@@ -1,0 +1,4 @@
+---
+- import_tasks: configure_firewall.yaml
+
+- import_tasks: install_elasticsearch_service.yaml

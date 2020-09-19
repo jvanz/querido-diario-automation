@@ -1,0 +1,12 @@
+---
+- name: "Open port 9200"
+  ufw:
+    rule: allow
+    port: "9200"
+    proto: tcp
+
+- name: "Open port 9300"
+  ufw:
+    rule: allow
+    port: "9300"
+    proto: tcp
