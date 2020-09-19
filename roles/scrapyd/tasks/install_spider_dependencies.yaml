@@ -1,0 +1,19 @@
+---
+
+- name: Install spider dependencies
+  apt:
+    pkg: 
+      - default-jre 
+      - poppler-utils 
+      - postgresql
+      - postgresql-client 
+
+- name: Download requirements file with spider python dependencies
+  get_url:
+    url: https://raw.githubusercontent.com/okfn-brasil/querido-diario/main/processing/requirements.txt
+    dest: /tmp/spider-deps.txt
+
+- name: Install spider python dependencies
+  pip:
+    requirements: /tmp/spider-deps.txt
+

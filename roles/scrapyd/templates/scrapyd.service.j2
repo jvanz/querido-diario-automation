@@ -1,0 +1,11 @@
+[Unit]
+Description=Scrapy daemon
+
+[Service]
+TimeoutStartSec=0
+ExecStart=/usr/bin/podman run --rm --publish 6800:6800  --volume /etc/scrapyd:/etc/scrapyd:ro --volume /var/log/scrapyd:/var/log/scrapyd:rw --volume /var/lib/scrapyd:/var/lib/scrapyd:rw --name scrapyd --workdir "/home/gazette" docker.io/guilhermesft/querido-diario:latest scrapyd
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

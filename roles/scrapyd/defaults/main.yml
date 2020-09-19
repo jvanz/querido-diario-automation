@@ -1,0 +1,39 @@
+---
+scrapyd:
+  eggs_dir    : /var/lib/scrapyd
+  logs_dir    : /var/log/scrapyd
+  items_dir   :
+  jobs_to_keep : 5
+  dbs_dir     : /var/lib/scrapyd
+  max_proc    : 0
+  max_proc_per_cpu : 4
+  finished_to_keep : 100
+  poll_interval : 5.0
+  bind_address : 0.0.0.0
+  http_port   : 6800
+  debug       : off
+  runner      : scrapyd.runner
+  application : scrapyd.app.application
+  launcher    : scrapyd.launcher.Launcher
+  webroot     : scrapyd.website.Root
+  services:
+    - name: schedule.json
+      class: scrapyd.webservice.Schedule
+    - name: cancel.json       
+      class: scrapyd.webservice.Cancel
+    - name: addversion.json   
+      class: scrapyd.webservice.AddVersion
+    - name: listprojects.json 
+      class: scrapyd.webservice.ListProjects
+    - name: listversions.json 
+      class: scrapyd.webservice.ListVersions
+    - name: listspiders.json  
+      class: scrapyd.webservice.ListSpiders
+    - name: delproject.json   
+      class: scrapyd.webservice.DeleteProject
+    - name: delversion.json   
+      class: scrapyd.webservice.DeleteVersion
+    - name: listjobs.json     
+      class: scrapyd.webservice.ListJobs
+    - name: daemonstatus.json 
+      class: scrapyd.webservice.DaemonStatus

@@ -1,0 +1,22 @@
+---
+- name: Create configuration directory
+  file:
+    path: /etc/scrapyd
+    state: directory
+    mode: "0755"
+
+- name: Create logs directory
+  file:
+    path: /var/log/scrapyd
+    state: directory
+    mode: "0755"
+    owner: gazette
+    group: gazette
+
+- name: Create data directory
+  file:
+    path: /var/lib/scrapyd
+    state: directory
+    mode: "0755"
+    owner: gazette
+    group: gazette

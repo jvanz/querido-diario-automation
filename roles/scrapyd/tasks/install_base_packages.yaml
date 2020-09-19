@@ -1,0 +1,23 @@
+---
+- name: update repositories
+  apt:
+    update_cache: yes
+
+- name: upgrade everything
+  apt: 
+    upgrade: yes
+
+- name: update everything
+  apt: 
+    name: "*"
+    state: latest
+
+    #- name: Install pip
+    #  apt:
+    #    name: python3-pip
+    #    state: present
+    #
+    #- name: Install scrapyd
+    #  pip:
+    #    name: "scrapyd"
+    #    state: present

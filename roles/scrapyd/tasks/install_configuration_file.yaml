@@ -1,0 +1,6 @@
+---
+- name: Install configuration file
+  template:
+    src: scrapyd.conf.j2
+    dest: /etc/scrapyd/scrapyd.conf
+    mode: '0644'

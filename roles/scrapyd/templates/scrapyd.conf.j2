@@ -1,0 +1,22 @@
+[scrapyd]
+eggs_dir    = {{scrapyd["eggs_dir"]}}
+logs_dir    = {{scrapyd["logs_dir"]}}
+items_dir   =
+jobs_to_keep = {{scrapyd["jobs_to_keep"]}}
+dbs_dir     = {{scrapyd["dbs_dir"]}}
+max_proc    = {{scrapyd["max_proc"]}}
+max_proc_per_cpu = {{scrapyd["max_proc_per_cpu"]}}
+finished_to_keep = {{scrapyd["finished_to_keep"]}}
+poll_interval = {{scrapyd["poll_interval"]}}
+bind_address = {{scrapyd["bind_address"]}}
+http_port   = {{scrapyd["http_port"]}}
+debug       = {{scrapyd["debug"]}}
+runner      = {{scrapyd["runner"]}}
+application = {{scrapyd["application"]}}
+launcher    = {{scrapyd["launcher"]}}
+webroot     = {{scrapyd["webroot"]}}
+
+[services]
+{% for service in scrapyd["services"] %}
+{{service.name}} = {{service.class}}
+{% endfor%}

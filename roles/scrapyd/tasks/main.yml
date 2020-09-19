@@ -1,0 +1,19 @@
+---
+- name: Create scrapyd user group
+  group:
+      name: gazette
+      gid: 1000
+
+- name: create spider user
+  user:
+      name: gazette
+      uid: 1000
+      group: gazette
+
+#- import_tasks: install_base_packages.yaml
+
+- import_tasks: create_directories.yaml
+
+- import_tasks: install_configuration_file.yaml
+
+- import_tasks: install_scrapyd_service.yaml
