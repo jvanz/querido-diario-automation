@@ -1,7 +1,43 @@
-# Set your S3 access information
-FILES_STORE: ""
-AWS_ENDPOINT_URL: ""
-AWS_ACCESS_KEY_ID: ""
-AWS_SECRET_ACCESS_KEY: ""
-AWS_REGION_NAME: ""
+ELASTICSEARCH_HOSTS: "[\"167.71.59.153\"]"
+ELASTICSEARCH_INDEX: "gazettes"
 
+DELETE_FILE_AFTER_EXTRACT_TEXT: True
+
+SPIDER_MIDDLEWARES: ""
+
+ITEM_PIPELINES: "{\"gazette.pipelines.GazetteDateFilteringPipeline\": 50, \"scrapy.pipelines.files.FilesPipeline\": 100,  \"gazette.pipelines.ExtractTextPipeline\": 200, \"gazette.pipelines.QueridoDiarioElasticsearch\": 300,}"
+
+container_image: "docker.io/guilhermesft/querido-diario:latest"
+
+cities:
+    - am_manaus
+    - go_aparecida_de_goiania
+    - go_goiania
+    - pr_curitiba
+    - pr_foz_do_iguacu
+    - pr_maringa
+    - pr_ponta_grossa
+    - rj_rio_de_janeiro
+    - ro_porto_velho
+    - rr_boa_vista
+    - rs_porto_alegre
+    - sc_blumenau
+    - sc_brusque
+    - sc_campos_novos
+    - sc_florianopolis
+    - sc_gaspar
+    - sc_itajai
+    - sc_penha
+    - sc_rodeio
+    - sc_xavantina
+    - sc_xaxim
+    - sp_campinas
+    - sp_franca
+    - sp_guaruja
+    - sp_guarulhos
+    - sp_jundiai
+    - sp_santos
+    - sp_sao_jose_dos_campos
+    - to_araguaina
+    - to_palmas
+    - mt_cuiaba

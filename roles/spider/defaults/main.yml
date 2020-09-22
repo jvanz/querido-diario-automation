@@ -10,6 +10,14 @@ timer:
 ITEM_PIPELINES: "{\"gazette.pipelines.GazetteDateFilteringPipeline\": 50, \"gazette.pipelines.QueridoDiarioFilesPipeline\": 100,}"
 SPIDER_MIDDLEWARES: "{\"scrapy_deltafetch.DeltaFetch\": 100}"
 
+DELTAFETCH_ENABLED:  False
+DELTAFETCH_DIR: "/mnt/data/deltafetch"
+
+ELASTICSEARCH_HOSTS: ""
+ELASTICSEARCH_INDEX: ""
+
+DELETE_FILE_AFTER_EXTRACT_TEXT: False
+
 #Digital Ocean spaces config
 FILES_STORE: "/mnt/data/"
 AWS_ACCESS_KEY_ID: ""

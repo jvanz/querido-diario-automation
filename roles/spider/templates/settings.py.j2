@@ -3,7 +3,9 @@ SPIDER_MODULES = ["gazette.spiders"]
 NEWSPIDER_MODULE = "gazette.spiders"
 ROBOTSTXT_OBEY = False
 ITEM_PIPELINES = {{ITEM_PIPELINES}}
+{% if SPIDER_MIDDLEWARES %}
 SPIDER_MIDDLEWARES = {{SPIDER_MIDDLEWARES}}
+{% endif  %}
 FILES_STORE = "{{FILES_STORE}}"
 
 # S3ish storage system
@@ -15,3 +17,12 @@ AWS_REGION_NAME= "{{AWS_REGION_NAME}}"
 # skip already crawled item
 DELTAFETCH_ENABLED = True
 DELTAFETCH_DIR = "/mnt/data/deltafetch"
+
+{% if ELASTICSEARCH_HOSTS %}
+# Configuration to connect to ES instance
+ELASTICSEARCH_HOSTS = {{ELASTICSEARCH_HOSTS}}
+ELASTICSEARCH_INDEX = "{{ELASTICSEARCH_INDEX}}"
+{% endif  %}
+
+DELETE_FILE_AFTER_EXTRACT_TEXT = {{DELETE_FILE_AFTER_EXTRACT_TEXT}}
+

@@ -1,5 +1,5 @@
 ---
-- name: Update servers
+- name: Install spider in a server
   hosts: querido_diario
   become: yes
   vars_files:
