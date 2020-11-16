@@ -1,0 +1,8 @@
+---
+- name: Install the service to run the gazette content extraction
+  hosts: content_extraction
+  become: yes
+  vars_files:
+      - vars/content_extraction.yaml
+  roles:
+      - content_extraction

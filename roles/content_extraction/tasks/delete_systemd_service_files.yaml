@@ -1,0 +1,12 @@
+---
+- name: Delete previous service file
+  file:
+      path: "/etc/systemd/system/gazette_content_extraction.service"
+      state: absent
+
+- name: Delete previous timer file
+  file:
+      path: "/etc/systemd/system/gazette_content_extraction.timer"
+      state: absent
+
+

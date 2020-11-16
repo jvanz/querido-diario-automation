@@ -1,0 +1,9 @@
+[Unit]
+Description=Run Gazette content extraction
+
+[Timer]
+OnCalendar={{TIMER.ONCALENDAR}}
+Persistent=true
+
+[Install]
+WantedBy=timers.target

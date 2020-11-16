@@ -1,0 +1,9 @@
+- name: "create {{ CONFIGDIR }}"
+  file:
+      path: "{{ CONFIGDIR }}"
+      state: directory
+
+- name: create env var file
+  template:
+      src: env.j2
+      dest: "{{ CONFIGDIR }}/env"

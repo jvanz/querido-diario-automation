@@ -1,0 +1,6 @@
+---
+- name: start timer to trigger the content extractor
+  systemd:
+      name: "gazette_content_extraction.timer"
+      enabled: yes
+      state: started

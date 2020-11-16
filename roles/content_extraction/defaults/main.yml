@@ -1,0 +1,25 @@
+---
+
+STORAGE_REGION: ""
+STORAGE_ENDPOINT: ""
+STORAGE_ACCESS_KEY: ""
+STORAGE_ACCESS_SECRET: ""
+STORAGE_BUCKET: ""
+POSTGRES_DB: ""
+POSTGRES_USER: ""
+POSTGRES_PASSWORD: ""
+POSTGRES_HOST: ""
+POSTGRES_PORT: ""
+ELASTICSEARCH_HOST: ""
+ELASTICSEARCH_INDEX: ""
+DEBUG: "0"
+
+CONFIGDIR: "/etc/gazette-content-extraction"
+CONTAINER_IMAGE: "docker.io/serenata/querido-diario-data-processing:latest"
+CONTAINER_NAME: "gazette-content-extraction"
+CONTAINER_CPU: 1
+CONTAINER_MEMORY: "512m"
+
+TIMER:
+  ONCALENDAR: "daily"
+

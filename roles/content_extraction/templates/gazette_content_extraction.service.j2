@@ -1,0 +1,12 @@
+[Unit]
+Description=Gazettes content extraction
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker rm {{CONTAINER_NAME}}
+ExecStartPre=-/usr/bin/docker rmi {{CONTAINER_IMAGE}}
+ExecStart=/usr/bin/docker run --env-file {{ CONFIGDIR }}/env --memory={{CONTAINER_MEMORY}} --cpus={{CONTAINER_CPU}}   --name {{CONTAINER_NAME}} {{ CONTAINER_IMAGE }}  python main
+ExecStop=/usr/bin/docker stop {{CONTAINER_NAME}}
+
+[Install]
+WantedBy=multi-user.target
