@@ -9,4 +9,7 @@
       path: "/etc/systemd/system/gazette_content_extraction.timer"
       state: absent
 
-
+- name: Delete previous Apache Tika server service file
+  file:
+      path: "/etc/systemd/system/querido-diario-apache_tika_server.service"
+      state: absent

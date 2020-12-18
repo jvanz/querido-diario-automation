@@ -18,8 +18,15 @@ CONFIGDIR: "/etc/gazette-content-extraction"
 CONTAINER_IMAGE: "docker.io/serenata/querido-diario-data-processing:latest"
 CONTAINER_NAME: "gazette-content-extraction"
 CONTAINER_CPU: 1
-CONTAINER_MEMORY: "512m"
+CONTAINER_MEMORY: "128m"
 
 TIMER:
   ONCALENDAR: "daily"
 
+APACHE_TIKA_SERVER: "http://localhost:9998"
+APACHE_TIKA_CONTAINER_IMAGE: "docker.io/serenata/querido-diario-apache-tika-server:latest"
+APACHE_TIKA_CONTAINER_NAME: "querido-diario-apache-tika-server"
+
+POD_NAME: "querido-diario"
+
+QUERIDO_DIARIO_FILES_ENDPOINT: ""

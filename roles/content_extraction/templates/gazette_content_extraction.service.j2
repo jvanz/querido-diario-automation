@@ -1,12 +1,13 @@
 [Unit]
 Description=Gazettes content extraction
+After=querido-diario-apache_tika_server.service
+Requires=querido-diario-apache_tika_server.service
 
 [Service]
 TimeoutStartSec=0
-ExecStartPre=-/usr/bin/docker rm {{CONTAINER_NAME}}
-ExecStartPre=-/usr/bin/docker rmi {{CONTAINER_IMAGE}}
-ExecStart=/usr/bin/docker run --env-file {{ CONFIGDIR }}/env --memory={{CONTAINER_MEMORY}} --cpus={{CONTAINER_CPU}}   --name {{CONTAINER_NAME}} {{ CONTAINER_IMAGE }}  python main
-ExecStop=/usr/bin/docker stop {{CONTAINER_NAME}}
+ExecStartPre=-/usr/bin/podman rm --force --ignore {{CONTAINER_NAME}}
+ExecStart=/usr/bin/podman run --pod {{POD_NAME}} --env-file {{ CONFIGDIR }}/env --memory={{CONTAINER_MEMORY}} --cpus={{CONTAINER_CPU}}   --name {{CONTAINER_NAME}} {{ CONTAINER_IMAGE }}  python main
+ExecStop=/usr/bin/podman stop {{CONTAINER_NAME}}
 
 [Install]
 WantedBy=multi-user.target
