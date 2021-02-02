@@ -4,10 +4,9 @@ PartOf=gazette_content_extraction.service
 
 [Service]
 TimeoutStartSec=0
-ExecStartPre=-/usr/bin/podman pod rm --force --ignore {{POD_NAME}}
-ExecStartPre=-/usr/bin/podman pod create --name {{POD_NAME}}
+ExecStartPre=-/usr/bin/podman rm --force --ignore {{APACHE_TIKA_CONTAINER_NAME}}
 ExecStart=/usr/bin/podman run --pod {{POD_NAME}} --env-file {{ CONFIGDIR }}/env  --name {{APACHE_TIKA_CONTAINER_NAME}} {{ APACHE_TIKA_CONTAINER_IMAGE }}
-ExecStop=/usr/bin/podman stop {{APACHE_TIKA_CONTAINER_IMAGE}}
+ExecStop=/usr/bin/podman stop {{APACHE_TIKA_CONTAINER_NAME}}
 
 [Install]
 WantedBy=multi-user.target

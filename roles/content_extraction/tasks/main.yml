@@ -5,6 +5,8 @@
 
 - import_tasks: install_base_service_files.yaml
 
+- import_tasks: create_pod_used_by_container.yaml
+
 - name: reload systemd daemon
   systemd:
     daemon_reload: yes

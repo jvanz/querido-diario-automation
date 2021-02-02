@@ -1,0 +1,6 @@
+---
+- name: remove previous pod used to run the apps
+  command: podman pod rm --force --ignore {{POD_NAME}}
+
+- name: create pod used to run the apps
+  command: podman pod create --name {{POD_NAME}}
